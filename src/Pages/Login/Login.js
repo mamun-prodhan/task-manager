@@ -1,9 +1,13 @@
+import { Button } from 'flowbite-react';
 import React from 'react';
 
 const Login = () => {
     return (
         <div>
-            This is login page.
+            <Button>
+                Default
+            </Button>
+
         </div>
     );
 };
