@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 const Header = () => {
     return (
         <Navbar
+            className='mb-16'
             fluid={true}
             rounded={true}
         >
