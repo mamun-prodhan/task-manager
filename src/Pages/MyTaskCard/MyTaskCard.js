@@ -1,9 +1,11 @@
 import { Button, Card } from 'flowbite-react';
 import React from 'react';
 
-const MyTaskCard = ({task}) => {
+const MyTaskCard = ({task, setIsReload, isReload, handleDelete}) => {
 
     const {_id, insertDate, email, task:myTask} = task;
+
+
 
     return (
         <div>
@@ -17,10 +19,11 @@ const MyTaskCard = ({task}) => {
                             <Button size="xs">
                                 Complete
                             </Button>
-                            <Button size="xs">
+                            <Button size="xs" >
                                 Update
                             </Button>
-                            <Button size="xs">
+                            <Button size="xs"
+                            onClick={()=>handleDelete(_id)} >
                                 Delete
                             </Button>
                         </div>

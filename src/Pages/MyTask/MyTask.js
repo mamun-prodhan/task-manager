@@ -1,20 +1,41 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import MyTaskCard from '../MyTaskCard/MyTaskCard';
 
 const MyTask = () => {
 
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const [tasks, setTasks] = useState([]);
+    const [isReload, setIsReload] = useState(true);
 
 
-    useEffect( ()=>{
+    useEffect(() => {
         fetch(`http://localhost:5000/tasks?email=${user?.email}`)
-        .then(res => res.json())
-        .then(data => {
-            setTasks(data)
-        })
-    },[user?.email])
+            .then(res => res.json())
+            .then(data => {
+                setTasks(data)
+            })
+    }, [user?.email])
+
+
+    const handleDelete = (id) => {
+        const proceed = window.confirm("Want to Delete task?");
+        if (proceed) {
+            fetch(`http://localhost:5000/tasks/${id}`, {
+                method: "DELETE"
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        toast.success("Deleted Successfully");
+                        const remaining = tasks.filter(task => task._id !== id);
+                        setTasks(remaining);
+                    }
+                })
+        }
+
+    }
 
     return (
         <div>
@@ -32,6 +53,10 @@ const MyTask = () => {
                                 tasks.map(task => <MyTaskCard
                                     key={task._id}
                                     task={task}
+                                    isReload={isReload}
+                                    setIsReload={setIsReload}
+                                    handleDelete={handleDelete}
+
 
 
                                 ></MyTaskCard>)
@@ -40,7 +65,7 @@ const MyTask = () => {
                     </>
             }
 
-            
+
         </div>
     );
 };
