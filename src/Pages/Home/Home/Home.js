@@ -31,7 +31,7 @@ const Home = () => {
         .then(res => res.json())
         .then(data => {
             if (data.acknowledged) {
-                toast.success("Serivce Added Successfully", {
+                toast.success("Task Added", {
                     position: "top-center",
                     autoClose: 2000,
                 });
