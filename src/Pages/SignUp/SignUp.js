@@ -1,25 +1,46 @@
 import { Button, Card, Label, TextInput } from 'flowbite-react';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const SignUp = () => {
-
-    const {createUser} = useContext(AuthContext);
+    const [error, setError] = useState('');
+    const {createUser, updateUserProfile} = useContext(AuthContext);
 
     const handleSignUp = event =>{
         event.preventDefault();
+        setError('');
         const form = event.target;
+        const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
+        console.log(name, email, password);
 
         createUser(email, password)
         .then(result =>{
             const user = result.user;
+            toast.success('User Created Successfully');
             console.log(user);
             form.reset();
+            handleUpdateUserProfile(name);
         })
-        .catch(err => console.error(err));
+        .catch(err => {
+            console.error(err);
+            setError(err.message);
+        });
+    }
+
+    const handleUpdateUserProfile = (name) => {
+        const profile = {
+            displayName: name
+        }
+        updateUserProfile(profile)
+            .then(() => { })
+            .catch(err => {
+                console.error(err);
+                setError(err.message);
+            })
     }
 
     return (
@@ -72,6 +93,7 @@ const SignUp = () => {
                             required={true}
                         />
                     </div>
+                    <p className='text-red-600 mt-4'>{error}</p>
                     
                     <Button className='mt-4' type="submit">
                         Sign Up

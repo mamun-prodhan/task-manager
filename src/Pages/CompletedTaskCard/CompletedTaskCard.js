@@ -1,4 +1,4 @@
-import { Button, Card } from 'flowbite-react';
+import { Button, Card, Label, TextInput } from 'flowbite-react';
 import React from 'react';
 
 const CompletedTaskCard = ({ completedTask: singleTask, setIsReload, isReload, handleDelete, handleNotComplete }) => {
@@ -21,10 +21,28 @@ const CompletedTaskCard = ({ completedTask: singleTask, setIsReload, isReload, h
                                 Delete
                             </Button>
                         </div>
-                        <div>
-                            <Button className='mt-4' size="xs" >
-                                Add a Comment
-                            </Button>
+                        <div className='border p-4 rounded mt-4'>
+                            <form className="flex flex-col gap-4 w-full">
+                                <div>
+                                    <div className="mb-2 block">
+                                        <Label
+                                            htmlFor="task"
+                                            value="Comments"
+                                        />
+                                    </div>
+                                    <TextInput
+                                        id="task"
+                                        type="text"
+                                        name="task"
+                                        placeholder="New Task"
+                                        required={true}
+                                        size="xs"
+                                    />
+                                </div>
+                                <Button type="submit" size="xs">
+                                    Add Comments
+                                </Button>
+                            </form>
                         </div>
                     </div>
                 </Card>

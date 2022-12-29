@@ -1,4 +1,4 @@
-import { Navbar } from 'flowbite-react';
+import { Button, Navbar } from 'flowbite-react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -24,46 +24,60 @@ const Header = () => {
 
                 <Link to="/">
                     <Navbar
-                         className="bg-sky-500 hover:bg-sky-700 rounded"
+                        className=""
                         active={true}
                     >
-                        Home
+                        <Button size="sm" color="light">
+                            Home
+                        </Button>
                     </Navbar>
                 </Link>
 
                 <Link to="/addtask">
                     <Navbar>
-                        Add Task
+                        <Button size="sm" color="light">
+                            Add Task
+                        </Button>
                     </Navbar>
                 </Link>
 
                 <Link to="/mytask">
                     <Navbar>
-                        My Task
+                        <Button size="sm" color="light">
+                            My Task
+                        </Button>
                     </Navbar>
                 </Link>
 
                 <Link to="/completetask">
                     <Navbar>
-                        Complete Task
+                        <Button size="sm" color="light">
+                            Complete Task
+                        </Button>
                     </Navbar>
                 </Link>
 
                 <Link to="/media">
                     <Navbar>
-                        Media
+                        <Button size="sm" color="light">
+                            Media
+                        </Button>
                     </Navbar>
                 </Link>
 
                 <Link to='/login'>
                     <Navbar>
-                        Login
+                        <Button size="sm" color="light">
+                            Login
+                        </Button>
                     </Navbar>
                 </Link>
 
                 <Link to='/signup'>
                     <Navbar>
-                        Sign Up
+                        <Button size="sm" color="light">
+                            Sign Up
+                        </Button>
                     </Navbar>
                 </Link>
 

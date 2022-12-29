@@ -76,7 +76,7 @@ const CompletedTask = () => {
     }
     return (
         <div>
-            T<div className='my-12'>
+            <div className='my-12'>
                 <p className='text-center text-5xl font-bold mb-4'>My All Completed Tasks</p>
                 <p className='text-center text-orange-600 font-bold text-2xl'>You have {completedTasks.length} Completed Task</p>
             </div>
