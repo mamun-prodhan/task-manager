@@ -10,7 +10,7 @@ const CompletedTask = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/completedTasks?email=${user?.email}`)
+        fetch(`https://task-manager-server-weld.vercel.app/completedTasks?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setCompletedTasks(data)
@@ -21,7 +21,7 @@ const CompletedTask = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm("Want to Delete Completed task?");
         if (proceed) {
-            fetch(`http://localhost:5000/completedTasks/${id}`, {
+            fetch(`https://task-manager-server-weld.vercel.app/completedTasks/${id}`, {
                 method: "DELETE"
             })
                 .then(res => res.json())
@@ -43,7 +43,7 @@ const CompletedTask = () => {
                 email: singleTask.email,
                 task: singleTask.task
             }
-            fetch('http://localhost:5000/tasks', {
+            fetch('https://task-manager-server-weld.vercel.app/tasks', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -61,7 +61,7 @@ const CompletedTask = () => {
         }
 
         if (proceed) {
-            fetch(`http://localhost:5000/completedTasks/${singleTask._id}`, {
+            fetch(`https://task-manager-server-weld.vercel.app/completedTasks/${singleTask._id}`, {
                 method: "DELETE"
             })
                 .then(res => res.json())

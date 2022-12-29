@@ -22,7 +22,7 @@ const Home = () => {
             task: task
         }
 
-        fetch('http://localhost:5000/tasks', {
+        fetch('https://task-manager-server-weld.vercel.app/tasks', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

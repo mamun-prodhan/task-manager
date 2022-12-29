@@ -45,7 +45,7 @@ const UpdateModal = ({ singleTask, isReload, setIsReload }) => {
     // const email = form.email.value;
     // const review = form.review.value;
 
-    fetch(`http://localhost:5000/tasks/${_id}`, {
+    fetch(`https://task-manager-server-weld.vercel.app/tasks/${_id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
