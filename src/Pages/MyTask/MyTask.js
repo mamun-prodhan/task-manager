@@ -34,7 +34,45 @@ const MyTask = () => {
                     }
                 })
         }
+    }
+    
+    const handleComplete = (singleTask) => {
+        const proceed = window.confirm("Want to Complete task?");
+        if(proceed){
+            const completedTasks = {
+                insertDate: new Date(),
+                email: singleTask.email,
+                task: singleTask.task
+            }
+            fetch('http://localhost:5000/completedTasks',{
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(completedTasks)
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.acknowledged){
+                    toast.success("task completed");
+                }
+            })
+            .catch(err => console.error(err))
+        }
 
+        if (proceed) {
+            fetch(`http://localhost:5000/tasks/${singleTask._id}`, {
+                method: "DELETE"
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        toast.success("Completed Successfully");
+                        const remaining = tasks.filter(task => task._id !== singleTask._id);
+                        setTasks(remaining);
+                    }
+                })
+        }
     }
 
     return (
@@ -56,6 +94,7 @@ const MyTask = () => {
                                     isReload={isReload}
                                     setIsReload={setIsReload}
                                     handleDelete={handleDelete}
+                                    handleComplete={handleComplete}
 
 
 

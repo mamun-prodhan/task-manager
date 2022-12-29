@@ -1,12 +1,8 @@
 import { Button, Card } from 'flowbite-react';
 import React from 'react';
 
-const MyTaskCard = ({task:singleTask, setIsReload, isReload, handleDelete, handleComplete}) => {
-
-    const {_id, insertDate, email, task:myTask} = singleTask;
-
-
-
+const CompletedTaskCard = ({ completedTask: singleTask, setIsReload, isReload, handleDelete, handleNotComplete }) => {
+    const { _id, insertDate, email, task: myTask } = singleTask;
     return (
         <div>
             <div className="max-w-sm">
@@ -17,22 +13,24 @@ const MyTaskCard = ({task:singleTask, setIsReload, isReload, handleDelete, handl
                         </h5>
                         <div className="mt-4 flex space-x-3 lg:mt-6">
                             <Button size="xs"
-                            onClick={()=>handleComplete(singleTask)}>
-                                Complete
-                            </Button>
-                            <Button size="xs" >
-                                Update
+                                onClick={() => handleNotComplete(singleTask)}>
+                                Not Complete
                             </Button>
                             <Button size="xs"
-                            onClick={()=>handleDelete(_id)} >
+                                onClick={() => handleDelete(_id)} >
                                 Delete
+                            </Button>
+                        </div>
+                        <div>
+                            <Button className='mt-4' size="xs" >
+                                Add a Comment
                             </Button>
                         </div>
                     </div>
                 </Card>
             </div >
-        </div >
+        </div>
     );
 };
 
-export default MyTaskCard;
+export default CompletedTaskCard;
