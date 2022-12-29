@@ -1,6 +1,6 @@
 import { Button, Card, Label, TextInput } from 'flowbite-react';
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { FaGoogle } from "react-icons/fa";
@@ -8,6 +8,7 @@ import { FaGoogle } from "react-icons/fa";
 const Login = () => {
     const [error, setError] = useState('');
     const { login, providerLogin } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const googleProvider = new GoogleAuthProvider();
 
@@ -17,6 +18,7 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 setError('');
+                navigate('/');
             })
             .catch(error => {
                 console.error(error);
@@ -39,6 +41,7 @@ const Login = () => {
                 console.log(user);
                 form.reset();
                 setError('');
+                navigate('/');
             })
             .catch(err => {
                 console.error(err);

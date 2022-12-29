@@ -1,12 +1,13 @@
 import { Button, Card, Label, TextInput } from 'flowbite-react';
 import React, { useContext, useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const SignUp = () => {
     const [error, setError] = useState('');
     const {createUser, updateUserProfile} = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleSignUp = event =>{
         event.preventDefault();
@@ -24,6 +25,7 @@ const SignUp = () => {
             console.log(user);
             form.reset();
             handleUpdateUserProfile(name);
+            navigate('/');
         })
         .catch(err => {
             console.error(err);
