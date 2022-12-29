@@ -1,5 +1,6 @@
 import { Button, Card } from 'flowbite-react';
 import React from 'react';
+import UpdateModal from '../UpdateModal/UpdateModal';
 
 const MyTaskCard = ({task:singleTask, setIsReload, isReload, handleDelete, handleComplete}) => {
 
@@ -20,13 +21,17 @@ const MyTaskCard = ({task:singleTask, setIsReload, isReload, handleDelete, handl
                             onClick={()=>handleComplete(singleTask)}>
                                 Complete
                             </Button>
-                            <Button size="xs" >
-                                Update
-                            </Button>
+
                             <Button size="xs"
                             onClick={()=>handleDelete(_id)} >
                                 Delete
                             </Button>
+
+                            <UpdateModal
+                            singleTask={singleTask}
+                            setIsReload={setIsReload}
+                            isReload={isReload}
+                            />
                         </div>
                     </div>
                 </Card>

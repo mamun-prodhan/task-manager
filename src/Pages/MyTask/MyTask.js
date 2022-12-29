@@ -16,7 +16,7 @@ const MyTask = () => {
             .then(data => {
                 setTasks(data)
             })
-    }, [user?.email])
+    }, [user?.email, isReload])
 
 
     const handleDelete = (id) => {
