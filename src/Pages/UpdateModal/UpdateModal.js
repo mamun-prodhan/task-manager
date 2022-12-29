@@ -1,3 +1,4 @@
+import { Button } from 'flowbite-react';
 import React from 'react';
 import { toast } from 'react-hot-toast';
 import Modal from "react-modal";
@@ -69,10 +70,10 @@ const UpdateModal = ({ singleTask, isReload, setIsReload }) => {
     return (
         <div>
       <ToastContainer />
-      <button onClick={openModal} className="btn btn-primary btn-sm">
+      <Button onClick={openModal} size="xs">
         {" "}
         Update
-      </button>
+      </Button>
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
@@ -80,9 +81,9 @@ const UpdateModal = ({ singleTask, isReload, setIsReload }) => {
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <button onClick={closeModal} className="btn btn-primary btn-sm ml-3">
+        <Button onClick={closeModal} className="btn btn-primary btn-sm ml-3">
           close
-        </button>
+        </Button>
         <div className='p-3 '>Update Your Task</div>
         <div className=" p-3 color-4D4C7D">
           <form onSubmit={handleUpdate} className="container " >
@@ -116,7 +117,9 @@ const UpdateModal = ({ singleTask, isReload, setIsReload }) => {
               ></textarea>
             </div> */}
             <div className="mt-4">
-              <input type="submit" value="Update" className="btn btn-primary" />
+              <Button type="submit">
+                Update
+            </Button>
             </div>
           </form>
         </div>

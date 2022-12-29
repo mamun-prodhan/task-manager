@@ -53,7 +53,8 @@ const CompletedTask = () => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.acknowledged) {
-                        toast.success("task added again");
+                        // toast.success("task added again");
+                        console.log("task added again");
                     }
                 })
                 .catch(err => console.error(err))
@@ -66,7 +67,7 @@ const CompletedTask = () => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {
-                        toast.success("Added Again");
+                        toast.success("Task Added Again");
                         const remaining = completedTasks.filter(completedTask => completedTask._id !== singleTask._id);
                         setCompletedTasks(remaining);
                     }

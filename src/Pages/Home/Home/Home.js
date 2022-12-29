@@ -1,6 +1,6 @@
 import { Button, Label, TextInput } from 'flowbite-react';
 import React, { useContext } from 'react';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
@@ -31,10 +31,7 @@ const Home = () => {
         .then(res => res.json())
         .then(data => {
             if (data.acknowledged) {
-                toast.success("Task Added", {
-                    position: "top-center",
-                    autoClose: 2000,
-                });
+                toast.success("Task Added");
                 form.reset();
             }
         })
@@ -43,7 +40,6 @@ const Home = () => {
 
     return (
         <div>
-            <ToastContainer />
             <h2 className='text-4xl font-bold text-center mt-16'>Add Your Task</h2>
             <form onSubmit={handleTask} className="flex flex-col gap-4 w-1/2 mx-auto">
                 <div>
