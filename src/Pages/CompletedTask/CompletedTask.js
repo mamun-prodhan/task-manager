@@ -1,14 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import CompletedTaskCard from '../CompletedTaskCard/CompletedTaskCard';
 import Loader from '../Shared/Loader/Loader';
+
 
 const CompletedTask = () => {
     const { user } = useContext(AuthContext);
     const [completedTasks, setCompletedTasks] = useState([]);
     const [isReload, setIsReload] = useState(true);
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -58,6 +61,7 @@ const CompletedTask = () => {
                     if (data.acknowledged) {
                         // toast.success("task added again");
                         console.log("task added again");
+                        navigate('/mytask');
                     }
                 })
                 .catch(err => console.error(err))

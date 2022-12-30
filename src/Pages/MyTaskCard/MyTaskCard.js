@@ -4,7 +4,7 @@ import UpdateModal from '../UpdateModal/UpdateModal';
 
 const MyTaskCard = ({task:singleTask, setIsReload, isReload, handleDelete, handleComplete}) => {
 
-    const {_id, insertDate, email, task:myTask} = singleTask;
+    const {_id,image, insertDate, email, task:myTask} = singleTask;
 
 
 
@@ -14,8 +14,11 @@ const MyTaskCard = ({task:singleTask, setIsReload, isReload, handleDelete, handl
                 <Card>
                     <div className="flex flex-col items-center pb-10">
                         <h5 className="mb-1 text-md text-center font-bold text-gray-900 dark:text-white">
-                            {myTask}
+                            Task: {myTask}
                         </h5>
+                        {
+                            singleTask?.image ? <img className='rounded mt-4' src={image} style={{width: "300px", height:"200px"}} alt="imagetask" /> : <><img className='border-2 rounded mt-4' src="https://i.ibb.co/Bjs7kyP/No-Image-Added.png" alt="" /></>
+                        }
                         <div className="mt-4 flex space-x-3 lg:mt-6">
                             <Button size="xs"
                             onClick={()=>handleComplete(singleTask)}>

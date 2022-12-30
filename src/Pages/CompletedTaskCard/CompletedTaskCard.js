@@ -26,15 +26,15 @@ const CompletedTaskCard = ({ completedTask: singleTask, setIsReload, isReload, h
                                 <div>
                                     <div className="mb-2 block">
                                         <Label
-                                            htmlFor="task"
-                                            value="Comments"
+                                            htmlFor="comments"
+                                            value="comments"
                                         />
                                     </div>
                                     <TextInput
-                                        id="task"
+                                        id="comments"
                                         type="text"
-                                        name="task"
-                                        placeholder="New Task"
+                                        name="comments"
+                                        placeholder="comments"
                                         required={true}
                                         size="xs"
                                     />

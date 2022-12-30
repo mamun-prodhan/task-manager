@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import MyTaskCard from '../MyTaskCard/MyTaskCard';
 import Loader from '../Shared/Loader/Loader';
@@ -10,6 +11,7 @@ const MyTask = () => {
     const [tasks, setTasks] = useState([]);
     const [isReload, setIsReload] = useState(true);
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -59,6 +61,7 @@ const MyTask = () => {
                 if(data.acknowledged){
                     // toast.success("task completed");
                     console.log('task completed');
+                    navigate('/completetask');
                 }
             })
             .catch(err => console.error(err))
