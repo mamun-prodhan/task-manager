@@ -2,11 +2,13 @@ import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import CompletedTaskCard from '../CompletedTaskCard/CompletedTaskCard';
+import Loader from '../Shared/Loader/Loader';
 
 const CompletedTask = () => {
     const { user } = useContext(AuthContext);
     const [completedTasks, setCompletedTasks] = useState([]);
     const [isReload, setIsReload] = useState(true);
+    const [loading, setLoading] = useState(true);
 
 
     useEffect(() => {
@@ -14,6 +16,7 @@ const CompletedTask = () => {
             .then(res => res.json())
             .then(data => {
                 setCompletedTasks(data)
+                setLoading(!true)
             })
     }, [user?.email])
 
@@ -73,6 +76,9 @@ const CompletedTask = () => {
                     }
                 })
         }
+    }
+    if(loading){
+        return <Loader></Loader>
     }
     return (
         <div>

@@ -1,15 +1,17 @@
 import { Button, FileInput, Label, TextInput } from 'flowbite-react';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import ButtonLoader from '../Shared/ButtonLoader/ButtonLoader';
 
 const AddTask = () => {
-
+    const [loading, setLoading] = useState(!true);
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { user } = useContext(AuthContext);
     const imageHostKey = process.env.REACT_APP_imgbb_key;
     const handleAddTask = data => {
+        setLoading(true);
         const image = data.image[0];
         const formData = new FormData();
         formData.append('image', image);
@@ -41,6 +43,7 @@ const AddTask = () => {
                             if (data.acknowledged) {
                                 toast.success("Task Added");
                                 reset();
+                                setLoading(!true);
                             }
                         })
                         .catch(err => console.error(err))
@@ -73,7 +76,11 @@ const AddTask = () => {
                     {errors.image && <p className='text-red-600'>{errors.image?.message}</p>}
                 </div>
                 <Button className='w-full my-4' type="submit">
-                    Add Task
+                    
+                    {
+                        loading === true && <ButtonLoader></ButtonLoader>
+                    }
+                    <span className='ml-2'>Add Task</span>
                 </Button>
             </form>
         </div>
