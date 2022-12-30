@@ -47,7 +47,8 @@ const CompletedTask = () => {
             const notCompletedTasks = {
                 insertDate: new Date(),
                 email: singleTask.email,
-                task: singleTask.task
+                task: singleTask.task,
+                image: singleTask.image
             }
             fetch('https://task-manager-server-weld.vercel.app/tasks', {
                 method: 'POST',
