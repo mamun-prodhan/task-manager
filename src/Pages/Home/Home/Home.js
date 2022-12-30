@@ -44,7 +44,7 @@ const Home = () => {
             {
                 user?.email ?
                     <>
-                        <h2 className='text-4xl font-bold text-center mt-16'>Add Your Task</h2>
+                        <h2 className='text-4xl font-bold text-center mt-16'>Add Your Task Without Media</h2>
                         <form onSubmit={handleTask} className="flex flex-col gap-4 w-1/2 mx-auto">
                             <div>
                                 <div className="mb-2 block text-center">

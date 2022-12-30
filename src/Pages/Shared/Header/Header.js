@@ -1,14 +1,17 @@
 import { Button, Navbar } from 'flowbite-react';
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleLogOut = () => {
         logOut()
-            .then(() => { })
+            .then(() => {
+                navigate('/login');
+             })
             .catch(err => console.error(err))
     };
 
@@ -18,7 +21,8 @@ const Header = () => {
             fluid={true}
             rounded={true}
         >
-            <Navbar.Brand href="https://flowbite.com/">
+            <Link to="/">
+            <Navbar.Brand>
                 <img
                     src="https://cdn-icons-png.flaticon.com/512/906/906334.png"
                     className="mr-3 h-6 sm:h-9"
@@ -28,6 +32,7 @@ const Header = () => {
                     Task Manager
                 </span>
             </Navbar.Brand>
+            </Link>
             <Navbar.Toggle />
             <Navbar.Collapse>
 
