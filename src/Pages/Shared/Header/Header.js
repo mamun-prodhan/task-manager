@@ -74,14 +74,6 @@ const Header = () => {
                                 </Navbar>
                             </Link>
 
-                            <Link to="/media">
-                                <Navbar>
-                                    <Button size="sm" color="light">
-                                        Media
-                                    </Button>
-                                </Navbar>
-                            </Link>
-
                             <Link>
                                 <Navbar>
                                     <Button size="sm" color="light" onClick={handleLogOut}>

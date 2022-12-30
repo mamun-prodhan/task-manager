@@ -30,10 +30,6 @@ const router = createBrowserRouter([
                 element: <CompletedTask></CompletedTask>
             },
             {
-                path: '/media',
-                element: <Media></Media>
-            },
-            {
                 path: '/login',
                 element: <Login></Login>
             },

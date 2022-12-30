@@ -1,15 +1,18 @@
 import { Button, Label, TextInput } from 'flowbite-react';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import ButtonLoader from '../../Shared/ButtonLoader/ButtonLoader';
 
 const Home = () => {
 
     const { user } = useContext(AuthContext);
+    const [loading, setLoading] = useState(!true);
 
     const handleTask = event => {
+        setLoading(true);
         event.preventDefault();
         const form = event.target;
         const task = form.task.value;
@@ -34,6 +37,7 @@ const Home = () => {
                 if (data.acknowledged) {
                     toast.success("Task Added");
                     form.reset();
+                    setLoading(!true);
                 }
             })
             .catch(err => console.error(err))
@@ -62,15 +66,19 @@ const Home = () => {
                                 />
                             </div>
                             <Button type="submit">
-                                Add Task
+                                {
+                                    loading === true && <ButtonLoader></ButtonLoader>
+                                }
+                                <span className='ml-2'>Add Task</span>
                             </Button>
+
                         </form>
                     </>
                     :
                     <>
                         <h2 className='text-4xl font-bold text-center mt-16 mb-6'>Please <Link to="/login"><span className='text-orange-600 font-bold'>Login</span></Link> To ADD TASK</h2>
                         <div className='max-w-lg mx-auto'>
-                        <img src="https://i.ibb.co/sCpSVV1/task-ss.jpg" alt="task" />
+                            <img src="https://i.ibb.co/sCpSVV1/task-ss.jpg" alt="task" />
                         </div>
                     </>
 
